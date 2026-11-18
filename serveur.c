@@ -27,6 +27,8 @@ int main()
     }
 
     srand(getpid());
+    printf("PID serveur = %d\n", getpid());
+    fflush(stdout);
 
     /* Ouverture des tubes */
     fd1 = open(fifo1, O_RDONLY);
@@ -37,9 +39,6 @@ int main()
         perror("open");
         exit(1);
     }
-
-    printf("PID serveur = %d\n", getpid());
-    fflush(stdout);
 
     /* Installation des handlers */
     signal(SIGUSR1, hand_reveil);
